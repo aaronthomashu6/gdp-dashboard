@@ -470,7 +470,7 @@ with tab1:
                 
                 # Top party analysis
                 if len(display_df) > 1:
-                    st.subheader("🏆 Top Performers")
+                    # st.subheader("🏆 Top Performers")
                     col1, col2 = st.columns(2)
                     
                     with col1:
@@ -561,16 +561,20 @@ with tab2:
                         border-radius: 10px;
                         padding: 15px;
                         margin: 10px 0;
-                        background-color: #e8f5e8;
+                        background-color: #ffffff;
+                        color: #2c3e50;
+                        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
                     ">
-                        <h5>🔧 {machine['machine_name']}</h5>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                            <div><strong>🏢 Client:</strong> {machine['client_name']}</div>
-                            <div><strong>🔢 Quantity:</strong> {machine['num_machines']}</div>
-                            <div><strong>📋 Warranty:</strong> {status_color.get(machine['warranty_status'], '⚪')} {machine['warranty_status']}</div>
-                            <div><strong>🔍 Inspected:</strong> {inspect_color.get(machine['inspected'], '❓')} {machine['inspected']}</div>
+                        <h5 style="color: #27ae60; margin-bottom: 10px; font-weight: bold;">🔧 {machine['machine_name']}</h5>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; color: #34495e;">
+                            <div><strong style="color: #e74c3c;">🏢 Client:</strong> <span style="color: #2c3e50;">{machine['client_name']}</span></div>
+                            <div><strong style="color: #f39c12;">🔢 Quantity:</strong> <span style="color: #2c3e50;">{machine['num_machines']}</span></div>
+                            <div><strong style="color: #3498db;">📋 Warranty:</strong> {status_color.get(machine['warranty_status'], '⚪')} <span style="color: #2c3e50;">{machine['warranty_status']}</span></div>
+                            <div><strong style="color: #9b59b6;">🔍 Inspected:</strong> {inspect_color.get(machine['inspected'], '❓')} <span style="color: #2c3e50;">{machine['inspected']}</span></div>
                         </div>
-                        <small><strong>📅 Added:</strong> {machine['added_date']}</small>
+                        <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #ecf0f1;">
+                            <small style="color: #7f8c8d;"><strong>📅 Added:</strong> {machine['added_date']}</small>
+                        </div>
                     </div>
                     """, unsafe_allow_html=True)
                 
@@ -639,16 +643,20 @@ with tab2:
                         border-radius: 10px;
                         padding: 15px;
                         margin: 10px 0;
-                        background-color: #fdeaea;
+                        background-color: #ffffff;
+                        color: #2c3e50;
+                        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
                     ">
-                        <h5>🔧 {machine['machine_name']}</h5>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                            <div><strong>🏢 Client:</strong> {machine['client_name']}</div>
-                            <div><strong>🔢 Quantity:</strong> {machine['num_machines']}</div>
-                            <div><strong>🔍 Inspected:</strong> {inspect_color.get(machine['inspected'], '❓')} {machine['inspected']}</div>
-                            <div><strong>📋 Quote/LPO:</strong> {quote_color.get(machine['quote_lpo_status'], '❓')} {machine['quote_lpo_status']}</div>
+                        <h5 style="color: #e74c3c; margin-bottom: 10px; font-weight: bold;">🔧 {machine['machine_name']}</h5>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; color: #34495e;">
+                            <div><strong style="color: #e74c3c;">🏢 Client:</strong> <span style="color: #2c3e50;">{machine['client_name']}</span></div>
+                            <div><strong style="color: #f39c12;">🔢 Quantity:</strong> <span style="color: #2c3e50;">{machine['num_machines']}</span></div>
+                            <div><strong style="color: #3498db;">🔍 Inspected:</strong> {inspect_color.get(machine['inspected'], '❓')} <span style="color: #2c3e50;">{machine['inspected']}</span></div>
+                            <div><strong style="color: #9b59b6;">📋 Quote/LPO:</strong> {quote_color.get(machine['quote_lpo_status'], '❓')} <span style="color: #2c3e50;">{machine['quote_lpo_status']}</span></div>
                         </div>
-                        <small><strong>📅 Added:</strong> {machine['added_date']}</small>
+                        <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #ecf0f1;">
+                            <small style="color: #7f8c8d;"><strong>📅 Added:</strong> {machine['added_date']}</small>
+                        </div>
                     </div>
                     """, unsafe_allow_html=True)
                 
@@ -764,3 +772,5 @@ with tab3:
     else:
         st.error(f"❌ Database file not found: {DB_FILE}")
         st.info("The database will be created automatically when you add your first machine or delete a tile.")
+
+# Footer
