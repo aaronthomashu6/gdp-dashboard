@@ -216,7 +216,7 @@ def process_csv_data(df):
         'Party': ['Party', 'Customer', 'Client', 'Company'],
         'StockCode': ['StockCode', 'Stock Code', 'Item Code', 'Product Code'],
         'Description': ['Description', 'Item Description', 'Product Description'],
-        'Rate': ['Rate', 'Amount', 'Price', 'Unit Price', 'Gr.Amt']
+        'Rate': ['Gr.Amt', 'Amount', 'Price', 'Unit Price', 'Rate']
     }
     
     # Map columns to standard names
@@ -253,7 +253,7 @@ def process_csv_data(df):
     # Convert Date to datetime - handle multiple date formats
     df_filtered['Date'] = pd.to_datetime(df_filtered['Date'], errors='coerce', dayfirst=True)
     
-    # Convert Rate to numeric, handling any formatting issues
+    # Convert Gr.Amt to numeric, handling any formatting issues
     df_filtered['Rate'] = pd.to_numeric(df_filtered['Rate'], errors='coerce').fillna(0)
     
     # Clean text fields
@@ -267,7 +267,7 @@ def process_csv_data(df):
         'Party': 'first',
         'StockCode': lambda x: ', '.join(x.astype(str)),
         'Description': lambda x: ' | '.join(x.astype(str)),
-        'Rate': 'sum'
+        'Rate': 'sum'  # Using Rate field which now contains Gr.Amt values
     }).reset_index()
     
     # Add unique ID for each tile based on DocNo for consistency
